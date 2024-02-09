@@ -1,7 +1,6 @@
 <table width="100%" class="items-table" cellspacing="0" border="0">
     <tr class="item-table-heading-row">
-        <th width="2%" class="pr-20 text-right item-table-heading">#</th>
-        <th width="40%" class="pl-0 text-left item-table-heading">@lang('pdf_items_label')</th>
+        <th width="42%" class="pl-0 text-left item-table-heading">@lang('pdf_items_label')</th>
         @foreach($customFields as $field)
             <th class="text-right item-table-heading">{{ $field->label }}</th>
         @endforeach
@@ -12,17 +11,8 @@
         @endif
         <th class="text-right item-table-heading">@lang('pdf_amount_label')</th>
     </tr>
-    @php
-        $index = 1
-    @endphp
     @foreach ($estimate->items as $item)
         <tr class="item-row">
-            <td
-                class="pr-20 text-right item-cell"
-                style="vertical-align: top;"
-            >
-                {{$index}}
-            </td>
             <td
                 class="pl-0 text-left item-cell"
             >
@@ -64,9 +54,6 @@
                 {!! format_money_pdf($item->total, $estimate->customer->currency) !!}
             </td>
         </tr>
-        @php
-            $index += 1
-        @endphp
     @endforeach
 </table>
 
@@ -101,7 +88,7 @@
                 </tr>
             @endif
         @endif
-        
+
         @if ($estimate->tax_per_item === 'YES')
             @foreach ($taxes as $tax)
                 <tr>
@@ -125,7 +112,7 @@
                 </tr>
             @endforeach
         @endif
-        
+
         <tr>
             <td class="py-3"></td>
             <td class="py-3"></td>
